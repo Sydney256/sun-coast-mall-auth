@@ -13,8 +13,12 @@ export default async function handler(req, res) {
       `&redirect_uri=${encodeURIComponent(REDIRECT_URI)}` +
       "&scope=identify";
 
-    return res.redirect(discordAuthURL);
-  }
+res.redirect(
+  `https://www.suncoastmall.co/?discord=${encodeURIComponent(
+    user.username
+  )}&id=${user.id}&avatar=${user.avatar}`
+);
+
 
   // Step 2: Exchange code for token
   const tokenRes = await fetch("https://discord.com/api/oauth2/token", {
